@@ -39,6 +39,16 @@ return {
   },
 
   {
+    "seblyng/roslyn.nvim",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+    },
+    ft = "cs",
+  },
+
+  {
     "rmagatti/auto-session",
     lazy = false,
     keys = {

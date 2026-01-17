@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "tailwindcss", "vtsls" }
+local servers = { "html", "cssls", "tailwindcss", "vtsls", "roslyn" }
 vim.lsp.enable(servers)
 
 vim.lsp.config("roslyn", {})
