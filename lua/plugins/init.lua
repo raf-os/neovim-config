@@ -1,3 +1,6 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.hover.contentFormat = { "plaintext" }
+
 return {
   {
     "stevearc/conform.nvim",
@@ -34,16 +37,20 @@ return {
         "html",
         "css",
         "c_sharp",
+        "markdown",
+        "markdown_inline",
       },
     },
   },
 
   {
     "seblyng/roslyn.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
     ---@module 'roslyn.config'
     ---@type RoslynNvimConfig
     opts = {
       -- your configuration comes here; leave empty for default settings
+      filewatching = "roslyn",
     },
     ft = "cs",
   },
@@ -76,10 +83,13 @@ return {
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
-    opts = {},
-    preset = "lazy",
+    opts = {
+      completions = { blink = { enabled = true } },
+      indent = { enabled = true },
+    },
+    -- preset = "lazy",
     ft = { "markdown", "blink-cmp-docs" },
-    -- completions = { blink = { enabled = true } },
+    completions = { blink = { enabled = true } },
   },
 
   {
