@@ -1,6 +1,3 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.hover.contentFormat = { "plaintext" }
-
 return {
   {
     "stevearc/conform.nvim",
@@ -37,9 +34,13 @@ return {
         "html",
         "css",
         "c_sharp",
+        "c",
+        "query",
         "markdown",
         "markdown_inline",
       },
+      treesitter_highlighting = { enabled = true },
+      highlight = { enabled = true },
     },
   },
 
@@ -78,17 +79,24 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
-      completions = { blink = { enabled = true } },
-      indent = { enabled = true },
+      completions = { blink = { enabled = true }, lsp = { enabled = true } },
+      indent = { enabled = false },
+      html = { enabled = false },
+      latex = { enabled = false },
+      win_options = {
+        conceallevel = {
+          rendered = 2,
+        },
+      },
     },
-    -- preset = "lazy",
-    ft = { "markdown", "blink-cmp-docs" },
+    preset = "obsidian",
+    ft = { "markdown" },
     completions = { blink = { enabled = true } },
   },
 

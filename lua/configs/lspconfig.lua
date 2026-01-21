@@ -17,11 +17,11 @@ vim.lsp.config("roslyn", {
     textDocument = {
       completion = {
         completionItem = {
-          documentationFormat = { "plaintext" },
+          documentationFormat = { "markdown", "plaintext" },
         },
       },
       hover = {
-        contentFormat = { "plaintext" },
+        contentFormat = { "markdown", "plaintext" },
       },
     },
   },
