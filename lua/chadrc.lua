@@ -19,6 +19,10 @@ local options = {
       },
     },
 
+    signature = {
+      disabled = true,
+    },
+
     telescope = { style = "bordered" }, -- borderless / bordered
 
     statusline = {
@@ -97,8 +101,6 @@ local options = {
       border = "single",
     },
   },
-
-  lsp = { signature = true },
 
   cheatsheet = {
     theme = "grid", -- simple/grid
