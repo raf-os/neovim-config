@@ -16,6 +16,9 @@ return {
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "saghen/blink.cmp",
+    },
     config = function()
       require "configs.lspconfig"
     end,
@@ -79,25 +82,24 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim", "saghen/blink.cmp" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons", "saghen/blink.cmp" }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
+      file_types = { "markdown", "blink-cmp-documentation", "blink-cmp-menu" },
       completions = { blink = { enabled = true } },
-      indent = { enabled = false },
-      html = { enabled = false },
-      latex = { enabled = false },
       win_options = {
         conceallevel = {
           rendered = 2,
         },
       },
+      patterns = { markdown = { disable = false } },
     },
-    preset = "obsidian",
-    ft = { "markdown" },
-    completions = { blink = { enabled = true } },
+    -- preset = "obsidian",
+    -- ft = { "markdown", "blink-cmp-documentation", "blink-cmp-menu" },
+    -- completions = { lsp = { enabled = true } },
   },
 
   {
@@ -146,7 +148,6 @@ return {
 
   {
     "saghen/blink.cmp",
-    -- optional: provides snippets for the snippet source
     dependencies = {
       "rafamadriz/friendly-snippets",
       "seblyng/roslyn.nvim",
@@ -162,23 +163,9 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-      -- 'super-tab' for mappings similar to vscode (tab to accept)
-      -- 'enter' for enter to accept
-      -- 'none' for no mappings
-      --
-      -- All presets have the following mappings:
-      -- C-space: Open menu or open docs if already open
-      -- C-n/C-p or Up/Down: Select next/previous item
-      -- C-e: Hide menu
-      -- C-k: Toggle signature help (if signature.enabled = true)
-      --
-      -- See :h blink-cmp-config-keymap for defining your own keymap
       keymap = { preset = "default" },
 
       appearance = {
-        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
         -- use_nvim_cmp_as_default = true,
       },
@@ -191,7 +178,6 @@ return {
         },
       },
 
-      -- (Default) Only show the documentation popup when manually triggered
       completion = {
         list = {
           selection = {
@@ -202,6 +188,7 @@ return {
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 500,
+          treesitter_highlighting = true,
         },
         ghost_text = {
           enabled = true,
@@ -209,8 +196,6 @@ return {
         },
       },
 
-      -- Default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { "lazydev", "lsp", "path", "snippets", "buffer" },
         providers = {
@@ -225,15 +210,8 @@ return {
           },
         },
       },
-
-      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-      --
-      -- See the fuzzy documentation for more information
-      -- fuzzy = { implementation = "prefer_rust_with_warning" },
     },
-    -- opts_extend = { "sources.default" },
+    opts_extend = { "sources.default" },
   },
 
   {
