@@ -2,16 +2,31 @@ require("nvchad.configs.lspconfig").defaults()
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-vim.lsp.config("clss", {
-  capabilities = {
-    textDocument = {
-      completion = {
-        completionItem = {
-          documentationFormat = { "plaintext" },
-        },
+vim.lsp.config("cssls", {
+  settings = {
+    css = {
+      lint = {
+        unknownAtRules = "ignore",
       },
     },
   },
+  -- capabilities = {
+  --   textDocument = {
+  --     completion = {
+  --       completionItem = {
+  --         documentationFormat = { "plaintext" },
+  --       },
+  --     },
+  --     hover = {
+  --       contentFormat = { "plaintext" },
+  --     },
+  --   },
+  -- },
+})
+
+vim.lsp.config("tailwindcss", {
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  filetypes = { "css" },
 })
 
 -- vim.lsp.config("roslyn", {
@@ -31,7 +46,15 @@ vim.lsp.config("clss", {
 
 vim.lsp.config("roslyn", { capabilities = capabilities })
 
-local servers = { "html", "cssls", "tailwindcss", "vtsls" }
+vim.lsp.config("tailwind-cssls", {
+  cmd = {
+    "~/.nvm/versions/node/v23.6.0/lib/node_modules/@tailwindcss/language-server/bin/css-language-server",
+    "--stdio",
+  },
+  filetypes = { "css" },
+})
+
+local servers = { "html", "tailwindcss", "vtsls", "tailwind-cssls" }
 vim.lsp.enable(servers)
 
 -- read :h vim.lsp.config for changing options of lsp servers

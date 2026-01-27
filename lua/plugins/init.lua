@@ -171,7 +171,7 @@ return {
       },
 
       signature = {
-        enabled = true,
+        enabled = false,
         window = {
           treesitter_highlighting = true,
           show_documentation = true,
@@ -205,9 +205,9 @@ return {
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
           },
-          lsp = {
-            enabled = true,
-          },
+          -- lsp = {
+          --   enabled = true,
+          -- },
         },
       },
     },
@@ -218,7 +218,7 @@ return {
     "windwp/nvim-ts-autotag",
     lazy = false,
     opts = {
-      enable_close = false,
+      enable_close = true,
       enable_rename = true,
       enable_close_on_slash = true,
     },
