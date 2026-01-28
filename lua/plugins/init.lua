@@ -98,7 +98,7 @@ return {
       patterns = { markdown = { disable = false } },
     },
     -- preset = "obsidian",
-    -- ft = { "markdown", "blink-cmp-documentation", "blink-cmp-menu" },
+    ft = { "markdown", "blink-cmp-documentation" },
     -- completions = { lsp = { enabled = true } },
   },
 
@@ -218,9 +218,11 @@ return {
     "windwp/nvim-ts-autotag",
     lazy = false,
     opts = {
-      enable_close = true,
-      enable_rename = true,
-      enable_close_on_slash = true,
+      opts = {
+        enable_close = true,
+        enable_rename = true,
+        enable_close_on_slash = true,
+      },
     },
   },
 }

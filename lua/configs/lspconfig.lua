@@ -24,11 +24,6 @@ vim.lsp.config("cssls", {
   -- },
 })
 
-vim.lsp.config("tailwindcss", {
-  cmd = { "tailwindcss-language-server", "--stdio" },
-  filetypes = { "css" },
-})
-
 -- vim.lsp.config("roslyn", {
 --   capabilities = {
 --     textDocument = {
@@ -48,10 +43,11 @@ vim.lsp.config("roslyn", { capabilities = capabilities })
 
 vim.lsp.config("tailwind-cssls", {
   cmd = {
-    "~/.nvm/versions/node/v23.6.0/lib/node_modules/@tailwindcss/language-server/bin/css-language-server",
+    "/home/rafael/.nvm/versions/node/v23.6.0/lib/node_modules/@tailwindcss/language-server/bin/css-language-server",
     "--stdio",
   },
   filetypes = { "css" },
+  root_markers = { "package.json" },
 })
 
 local servers = { "html", "tailwindcss", "vtsls", "tailwind-cssls" }
