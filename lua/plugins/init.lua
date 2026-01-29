@@ -35,6 +35,8 @@ return {
         "lua",
         "vimdoc",
         "html",
+        "typescript",
+        "tsx",
         "css",
         "c_sharp",
         "c",
@@ -44,6 +46,18 @@ return {
       },
       treesitter_highlighting = { enabled = true },
       highlight = { enabled = true },
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufRead",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      event = "BufRead",
+    },
+    opts = {
+      multiwindow = true,
     },
   },
 
@@ -78,7 +92,24 @@ return {
     },
   },
 
-  { "nvim-mini/mini.nvim", version = "*" },
+  {
+    "nvim-mini/mini.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+    event = "VeryLazy",
+    version = "*",
+    config = function()
+      local spec_treesitter = require("mini.ai").gen_spec.treesitter
+      require("mini.ai").setup {
+        search_method = "cover_or_next",
+        n_lines = 500,
+        custom_textobjects = {
+          f = spec_treesitter { a = "@function.outer", i = "@function.inner" },
+        },
+      }
+      require("mini.move").setup()
+      require("mini.bracketed").setup()
+    end,
+  },
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
