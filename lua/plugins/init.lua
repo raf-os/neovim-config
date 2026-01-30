@@ -100,14 +100,33 @@ return {
     config = function()
       local spec_treesitter = require("mini.ai").gen_spec.treesitter
       require("mini.ai").setup {
-        search_method = "cover_or_next",
+        search_method = "cover",
         n_lines = 500,
         custom_textobjects = {
+          o = spec_treesitter { -- code block
+            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+          },
           f = spec_treesitter { a = "@function.outer", i = "@function.inner" },
+          c = spec_treesitter { a = "@class.outer", i = "@class.inner" },
+          -- t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
         },
       }
       require("mini.move").setup()
-      require("mini.bracketed").setup()
+      require("mini.bracketed").setup {
+        diagnostic = {
+          options = {
+            severity = vim.diagnostic.severity.ERROR,
+          },
+        },
+        indent = {
+          options = {
+            change_type = "diff",
+          },
+        },
+      }
+      require("mini.icons").setup()
+      require("mini.surround").setup()
     end,
   },
 
@@ -250,7 +269,7 @@ return {
     lazy = false,
     opts = {
       opts = {
-        enable_close = true,
+        enable_close = false,
         enable_rename = true,
         enable_close_on_slash = true,
       },
