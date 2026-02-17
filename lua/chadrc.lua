@@ -1,13 +1,13 @@
 local options = {
 
   base46 = {
-    theme = "decay", -- default theme
+    theme = "gruvchad", -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "decay", "one_light" },
+    theme_toggle = { "gruvchad", "one_light" },
   },
 
   ui = {

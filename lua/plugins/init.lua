@@ -43,6 +43,7 @@ return {
         "query",
         "markdown",
         "markdown_inline",
+        "qmljs",
       },
       treesitter_highlighting = { enabled = true },
       highlight = { enabled = true },

@@ -43,14 +43,18 @@ vim.lsp.config("roslyn", { capabilities = capabilities })
 
 vim.lsp.config("tailwind-cssls", {
   cmd = {
-    "/home/rafael/.nvm/versions/node/v23.6.0/lib/node_modules/@tailwindcss/language-server/bin/css-language-server",
+    "/usr/lib/node_modules/@tailwindcss/language-server/bin/css-language-server",
     "--stdio",
   },
   filetypes = { "css" },
   root_markers = { "package.json" },
 })
 
-local servers = { "html", "tailwindcss", "vtsls", "tailwind-cssls" }
+local servers = { "lua_ls", "html", "tailwindcss", "vtsls", "tailwind-cssls", "jsonls", "qmlls" }
 vim.lsp.enable(servers)
+
+vim.lsp.config("qmlls", {
+  cmd = { "qmlls6" },
+})
 
 -- read :h vim.lsp.config for changing options of lsp servers
