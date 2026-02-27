@@ -50,7 +50,9 @@ vim.lsp.config("tailwind-cssls", {
   root_markers = { "package.json" },
 })
 
-local servers = { "lua_ls", "html", "tailwindcss", "vtsls", "tailwind-cssls", "jsonls", "qmlls" }
+vim.lsp.config("neocmake", {})
+
+local servers = { "lua_ls", "html", "tailwindcss", "vtsls", "tailwind-cssls", "jsonls", "qmlls", "neocmake" }
 vim.lsp.enable(servers)
 
 vim.lsp.config("qmlls", {

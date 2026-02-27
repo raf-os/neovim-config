@@ -30,9 +30,13 @@ local options = {
       theme = "default", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = "default",
+      separator_style = "arrow",
       order = nil,
-      modules = nil,
+      modules = {
+        cursor = function()
+          return "%#St_pos_sep#%#St_pos_icon# %v:%l[%L]"
+        end,
+      },
     },
 
     -- lazyload it when there are 1+ buffers

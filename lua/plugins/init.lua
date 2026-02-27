@@ -128,6 +128,9 @@ return {
       }
       require("mini.icons").setup()
       require("mini.surround").setup()
+      require("mini.splitjoin").setup()
+      require("mini.cursorword").setup()
+      require("mini.indentscope").setup()
     end,
   },
 
@@ -141,11 +144,11 @@ return {
     opts = {
       file_types = { "markdown", "blink-cmp-documentation", "blink-cmp-menu" },
       completions = { blink = { enabled = true } },
-      win_options = {
-        conceallevel = {
-          rendered = 2,
-        },
-      },
+      -- win_options = {
+      --   conceallevel = {
+      --     rendered = 2,
+      --   },
+      -- },
       patterns = { markdown = { disable = false } },
     },
     -- preset = "obsidian",
@@ -232,7 +235,7 @@ return {
       completion = {
         list = {
           selection = {
-            preselect = true,
+            preselect = false,
             auto_insert = false,
           },
         },
