@@ -11,3 +11,11 @@ map("i", "jk", "<ESC>")
 -- map("n", "]m", "g]f", { desc = "Next method" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+map({ "n" }, "<C-S-h>", function()
+  require("nvchad.tabufline").move_buf(-1)
+end, { desc = "move buffer to the left" })
+
+map({ "n" }, "<C-S-l>", function()
+  require("nvchad.tabufline").move_buf(1)
+end, { desc = "move buffer to the right" })
