@@ -131,6 +131,11 @@ return {
       require("mini.splitjoin").setup()
       require("mini.cursorword").setup()
       require("mini.indentscope").setup()
+      require("mini.align").setup {
+        options = {
+          split_exclude_patterns = { "%b[]" },
+        },
+      }
     end,
   },
 
@@ -149,7 +154,7 @@ return {
       --     rendered = 2,
       --   },
       -- },
-      patterns = { markdown = { disable = false } },
+      patterns = { markdown = { disable = true } },
     },
     -- preset = "obsidian",
     ft = { "markdown", "blink-cmp-documentation" },
