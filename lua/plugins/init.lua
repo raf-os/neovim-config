@@ -29,25 +29,9 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "typescript",
-        "tsx",
-        "css",
-        "c_sharp",
-        "c",
-        "query",
-        "markdown",
-        "markdown_inline",
-        "qmljs",
-      },
-      treesitter_highlighting = { enabled = true },
-      highlight = { enabled = true },
-    },
+    config = function()
+      require "configs.treesitter"
+    end,
   },
 
   {
