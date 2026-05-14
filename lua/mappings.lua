@@ -19,3 +19,7 @@ end, { desc = "move buffer to the left" })
 map({ "n" }, "<C-S-l>", function()
   require("nvchad.tabufline").move_buf(1)
 end, { desc = "move buffer to the right" })
+
+map({ "x" }, "<leader>ff", function()
+  require("telescope.builtin").grep_string()
+end, { desc = "find selection" })

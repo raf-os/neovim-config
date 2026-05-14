@@ -50,9 +50,26 @@ vim.lsp.config("tailwind-cssls", {
   root_markers = { "package.json" },
 })
 
-vim.lsp.config("neocmake", {})
+vim.lsp.config("neocmake", {
+  cmd = { "neocmakelsp", "stdio" },
+})
 
-vim.lsp.config("clangd", {})
+vim.lsp.config("clangd", {
+  cmd = {
+    "clangd",
+    "--function-arg-placeholders=0",
+  },
+})
+
+vim.lsp.config("qmlls", {
+  cmd = { "qmlls6" },
+})
+
+-- vim.lsp.config("qml-language-server", {
+--   cmd = { "qml-language-server" },
+--   filetypes = { "qml" },
+--   root_markers = { { "qmldir", "shell.qml" }, ".git" },
+-- })
 
 local servers = {
   "lua_ls",
@@ -62,14 +79,11 @@ local servers = {
   "tailwind-cssls",
   "jsonls",
   "qmlls",
+  -- "qml-language-server",
   "neocmake",
   "clangd",
   "basedpyright",
 }
 vim.lsp.enable(servers)
-
-vim.lsp.config("qmlls", {
-  cmd = { "qmlls6" },
-})
 
 -- read :h vim.lsp.config for changing options of lsp servers

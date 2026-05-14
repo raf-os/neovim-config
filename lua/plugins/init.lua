@@ -194,6 +194,7 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "seblyng/roslyn.nvim",
+      { "L3MON4D3/LuaSnip", version = "v2.*" },
     },
 
     -- use a release tag to download pre-built binaries
@@ -207,6 +208,8 @@ return {
     ---@type blink.cmp.Config
     opts = {
       keymap = { preset = "default" },
+
+      snippets = { preset = "luasnip" },
 
       appearance = {
         nerd_font_variant = "mono",

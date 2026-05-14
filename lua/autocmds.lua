@@ -13,7 +13,7 @@ autocmd("BufWinEnter", {
 })
 
 autocmd("FileType", {
-  pattern = "*",
+  pattern = { "python" },
   callback = function()
     local ok = pcall(vim.treesitter.start)
     if ok then
