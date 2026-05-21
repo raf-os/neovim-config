@@ -17,7 +17,7 @@ o.foldenable = true
 o.foldcolumn = "1"
 o.foldlevel = 99
 o.foldlevelstart = 99
-o.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:"
+o.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:,foldinner: "
 
 o.viewoptions = "cursor,folds,slash,unix"
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
