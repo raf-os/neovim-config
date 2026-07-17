@@ -51,6 +51,11 @@ vim.lsp.config("tailwind-cssls", {
 })
 
 vim.lsp.config("neocmake", {
+  init_options = {
+    format = {
+      enable = true,
+    },
+  },
   cmd = { "neocmakelsp", "stdio" },
 })
 
@@ -83,6 +88,8 @@ local servers = {
   "neocmake",
   "clangd",
   "basedpyright",
+  "lemminx",
+  "glsl_analyzer",
 }
 vim.lsp.enable(servers)
 

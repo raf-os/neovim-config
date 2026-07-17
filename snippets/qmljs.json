@@ -1,0 +1,26 @@
+{
+  "console log": {
+    "prefix": "clog",
+    "body": [
+      "console.log(${1})$0"
+    ]
+  },
+  "function definition": {
+    "prefix": "fn",
+    "body": [
+      "function ($1) {",
+      "\t$2",
+      "}$0"
+    ]
+  },
+  "initial qml setup": {
+    "prefix": "qsup",
+    "body": [
+      "import QtQuick",
+      "",
+      "Item {",
+      "\tid: root",
+      "}"
+    ]
+  }
+}

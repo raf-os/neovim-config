@@ -1,5 +1,9 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    enabled = false,
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
@@ -120,6 +124,12 @@ return {
           split_exclude_patterns = { "%b[]" },
         },
       }
+      local gen_loader = require("mini.snippets").gen_loader
+      require("mini.snippets").setup {
+        snippets = {
+          gen_loader.from_lang(),
+        },
+      }
     end,
   },
 
@@ -190,11 +200,15 @@ return {
   },
 
   {
+    "rafamadriz/friendly-snippets",
+  },
+
+  {
     "saghen/blink.cmp",
     dependencies = {
       "rafamadriz/friendly-snippets",
       "seblyng/roslyn.nvim",
-      { "L3MON4D3/LuaSnip", version = "v2.*" },
+      "nvim-mini/mini.snippets",
     },
 
     -- use a release tag to download pre-built binaries
@@ -209,7 +223,7 @@ return {
     opts = {
       keymap = { preset = "default" },
 
-      snippets = { preset = "luasnip" },
+      snippets = { preset = "mini_snippets" },
 
       appearance = {
         nerd_font_variant = "mono",
@@ -264,6 +278,9 @@ return {
     "windwp/nvim-ts-autotag",
     lazy = false,
     opts = {
+      enable_close = true,
+      enable_rename = true,
+      enable_close_on_slash = false,
       opts = {
         enable_close = false,
         enable_rename = true,

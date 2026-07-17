@@ -23,3 +23,11 @@ end, { desc = "move buffer to the right" })
 map({ "x" }, "<leader>ff", function()
   require("telescope.builtin").grep_string()
 end, { desc = "find selection" })
+
+map({ "n" }, "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end, { desc = "LSP Code action" })
+
+map({ "n" }, "<leader>cr", function()
+  vim.lsp.buf.rename()
+end, { desc = "LSP Rename" })
